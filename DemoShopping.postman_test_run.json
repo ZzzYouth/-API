@@ -1,0 +1,3597 @@
+{
+	"id": "0efe562e-0f4f-4664-8ea1-42376d04c016",
+	"name": "DemoShopping",
+	"timestamp": "2024-09-18T07:41:21.401Z",
+	"collection_id": "38338491-ab4376d1-a9dc-4730-ab08-fab9e22faa3e",
+	"folder_id": 0,
+	"environment_id": "38338491-0d9c23f1-3857-426b-b10f-090ddab6fb01",
+	"totalPass": 1818,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-09-18T07:41:06.125Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "138ce8fc-c245-4c91-88b0-a1e2c0356b15",
+			"name": "Регистрация выполнена успешно (200)",
+			"url": "https://qa.demoshopping.ru/register",
+			"time": 189,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Ключ 'message' должен присутствовать": true,
+				"Response time is less than 1500мс500ms": true,
+				"Значение ключа 'message' соответствует ожидаемому": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Ключ 'message' должен присутствовать": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1500мс500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Значение ключа 'message' соответствует ожидаемому": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				189
+			],
+			"allTests": [
+				{
+					"Ключ 'message' должен присутствовать": true,
+					"Response time is less than 1500мс500ms": true,
+					"Значение ключа 'message' соответствует ожидаемому": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "81c0cc06-4dd4-4a90-afc9-915880948074",
+			"name": "Пользователь успешно добавлен (200)",
+			"url": "https://qa.demoshopping.ru/users",
+			"time": 67,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 1500ms": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				67
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 1500ms": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "fe3818c5-de05-418e-9893-a7c72b995008",
+			"name": "Вход выполнен успешно (200)",
+			"url": "https://qa.demoshopping.ru/login",
+			"time": 78,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 1500ms": true,
+				"Status code is 200": true,
+				"Ключ 'message' должен присутствовать": true,
+				"message должно быть строкой": true,
+				"Значение ключа 'message' соответствует ожидаемому": true,
+				"token должно быть строкой": true,
+				"Ключ 'token' должен присутствовать": true,
+				"Значение ключа 'token' должно измениться": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 1500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Ключ 'message' должен присутствовать": {
+					"pass": 1,
+					"fail": 0
+				},
+				"message должно быть строкой": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Значение ключа 'message' соответствует ожидаемому": {
+					"pass": 1,
+					"fail": 0
+				},
+				"token должно быть строкой": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Ключ 'token' должен присутствовать": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Значение ключа 'token' должно измениться": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				78
+			],
+			"allTests": [
+				{
+					"Response time is less than 1500ms": true,
+					"Status code is 200": true,
+					"Ключ 'message' должен присутствовать": true,
+					"message должно быть строкой": true,
+					"Значение ключа 'message' соответствует ожидаемому": true,
+					"token должно быть строкой": true,
+					"Ключ 'token' должен присутствовать": true,
+					"Значение ключа 'token' должно измениться": true
+				}
+			]
+		},
+		{
+			"id": "2ee58b94-2429-4b87-9fdc-ec10578ce3be",
+			"name": "Неверные данные пользователя (400)",
+			"url": "https://qa.demoshopping.ru/login",
+			"time": 40,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 1500ms": true,
+				"Status code is 400": true,
+				"Проверка сообщения об ошибке": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения об ошибке": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 1500ms": true,
+					"Status code is 400": true,
+					"Проверка сообщения об ошибке": true
+				}
+			]
+		},
+		{
+			"id": "5ccba2e7-9f8e-4251-ab1a-2f5c80397966",
+			"name": "Неверные данные пользователя или пользователь уже существует (400)",
+			"url": "https://qa.demoshopping.ru/register",
+			"time": 47,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Ключ 'error' должен присутствовать": true,
+				"Response time is less than 1500ms": true,
+				"Значение ключа 'error' соответствует ожидаемому": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Ключ 'error' должен присутствовать": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Значение ключа 'error' соответствует ожидаемому": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				47
+			],
+			"allTests": [
+				{
+					"Ключ 'error' должен присутствовать": true,
+					"Response time is less than 1500ms": true,
+					"Значение ключа 'error' соответствует ожидаемому": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "b2515d3f-27b8-4081-ab03-b9b10c9f6bfc",
+			"name": "Неверные данные пользователя (400)",
+			"url": "https://qa.demoshopping.ru/users",
+			"time": 39,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 1500ms": true,
+				"Status code is 400": true,
+				"Проверка сообщения об ошибке": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения об ошибке": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				39
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 1500ms": true,
+					"Status code is 400": true,
+					"Проверка сообщения об ошибке": true
+				}
+			]
+		},
+		{
+			"id": "f2e59c21-fd11-43db-a63a-4cadd8cbfd17",
+			"name": "Товары по производителю найдены (код 200)",
+			"url": "https://qa.demoshopping.ru/products/FindByManufacturer?manufacturer=Huawei",
+			"time": 42,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 1500ms": true,
+				"Status code is 200": true,
+				"Проверка ключей и значений продукта": true,
+				"Проверка массива продуктов": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 1500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка ключей и значений продукта": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка массива продуктов": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				42
+			],
+			"allTests": [
+				{
+					"Response time is less than 1500ms": true,
+					"Status code is 200": true,
+					"Проверка ключей и значений продукта": true,
+					"Проверка массива продуктов": true
+				}
+			]
+		},
+		{
+			"id": "bfa75e5e-20af-43e2-8123-7f2b6bca9811",
+			"name": "Успешный запрос (200)",
+			"url": "https://qa.demoshopping.ru/users",
+			"time": 91,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Статус код равен 200": true,
+				"Ответ является валидным JSON": true,
+				"Ответ содержит массив": true,
+				"Response time is less than 1500ms": true
+			},
+			"testPassFailCounts": {
+				"Статус код равен 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Ответ является валидным JSON": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Ответ содержит массив": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1500ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				91
+			],
+			"allTests": [
+				{
+					"Статус код равен 200": true,
+					"Ответ является валидным JSON": true,
+					"Ответ содержит массив": true,
+					"Response time is less than 1500ms": true
+				}
+			]
+		},
+		{
+			"id": "63b7b55a-a7b2-44fa-9537-487d513940a6",
+			"name": "Пользователь успешно удалён (200)",
+			"url": "https://qa.demoshopping.ru/users/595",
+			"time": 80,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 1500ms": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				80
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 1500ms": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "9db03510-4cf3-4b95-996f-21293509c458",
+			"name": "Пользователь не найден (404)",
+			"url": "https://qa.demoshopping.ru/users/595",
+			"time": 43,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 1500ms": true,
+				"Status code is 404": true,
+				"Проверка сообщения об ошибке": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения об ошибке": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				43
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 1500ms": true,
+					"Status code is 404": true,
+					"Проверка сообщения об ошибке": true
+				}
+			]
+		},
+		{
+			"id": "fe06d0f3-50d5-4939-b266-1c81f9bb2db3",
+			"name": "Возвращает список всех продуктов (200)",
+			"url": "https://qa.demoshopping.ru/products",
+			"time": 179,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Проверка ключей и значений продукта": true,
+				"Проверка массива продуктов": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка ключей и значений продукта": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка массива продуктов": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				179
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Проверка ключей и значений продукта": true,
+					"Проверка массива продуктов": true
+				}
+			]
+		},
+		{
+			"id": "6e10a002-3a61-4e8c-8a31-573a17e822d8",
+			"name": "Продукт успешно добавлен (200)",
+			"url": "https://qa.demoshopping.ru/add-product",
+			"time": 115,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				115
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "ecade528-4a8b-45b5-9c13-e7d5ea5a9699",
+			"name": "Ошибка в данных, при добавлении нового продукта (код 400)",
+			"url": "https://qa.demoshopping.ru/add-product?Content-Type=application/json",
+			"time": 41,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				41
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "137a7e2d-1eff-497f-891c-c8bb26d51a8e",
+			"name": "Товар успешно найден по ID (код 200)",
+			"url": "https://qa.demoshopping.ru/products/id/998",
+			"time": 45,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Проверка структуры JSON ответа": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка структуры JSON ответа": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				45
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Проверка структуры JSON ответа": true
+				}
+			]
+		},
+		{
+			"id": "cc955292-c237-4a15-bb73-902d72719a4a",
+			"name": "Товар с таким ID не найден (код 404)",
+			"url": "https://qa.demoshopping.ru/products/id/1000",
+			"time": 39,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 404": true,
+				"Проверка сообщения об ошибке": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения об ошибке": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				39
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 404": true,
+					"Проверка сообщения об ошибке": true
+				}
+			]
+		},
+		{
+			"id": "0af2e823-d611-4997-a849-6c8381f8343e",
+			"name": "Товар успешно обновлён частично (код 200)",
+			"url": "https://qa.demoshopping.ru/products/id/998",
+			"time": 61,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				61
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "f6b06a60-a8de-4fbb-8b83-0f2349c83d0e",
+			"name": "Ошибка частичного обновления товара (код 404)",
+			"url": "https://qa.demoshopping.ru/products/id/1000",
+			"time": 46,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 404": true,
+				"Проверка сообщения об ошибке": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения об ошибке": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				46
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 404": true,
+					"Проверка сообщения об ошибке": true
+				}
+			]
+		},
+		{
+			"id": "331b1936-993d-43b7-aaa1-b4aa7fc612d3",
+			"name": "Неверные данные продукта, при частичном обновлении (код 400)",
+			"url": "https://qa.demoshopping.ru/products/id/{{productId}}",
+			"time": 44,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				44
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "af365f10-96e9-4da6-ad37-2a2516607f10",
+			"name": "Полное обновление товара по ID (200)",
+			"url": "https://qa.demoshopping.ru/products/id/998",
+			"time": 87,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				87
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "e5d07eb4-4d0e-49b6-8c94-6467fff168cb",
+			"name": "Неверные данные продукта, при попытке обновления (код 400)",
+			"url": "https://qa.demoshopping.ru/products/id/{{productId}}",
+			"time": 42,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				42
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "5061c03c-4272-4c2a-805f-07525c32d304",
+			"name": "Товар с таким ID не найден, при попытке обновления (код 404)",
+			"url": "https://qa.demoshopping.ru/products/id/1000",
+			"time": 64,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 404": true,
+				"Проверка сообщения об ошибке": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения об ошибке": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				64
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 404": true,
+					"Проверка сообщения об ошибке": true
+				}
+			]
+		},
+		{
+			"id": "780cd1b9-5cff-40aa-857c-a7dea0572733",
+			"name": "Товар успешно удалён (код 200)",
+			"url": "https://qa.demoshopping.ru/products/id/998",
+			"time": 60,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				60
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "404c9696-efe2-47d7-bb42-8c7de0f2ac00",
+			"name": "Удаление этого товара запрещено (код 403)",
+			"url": "https://qa.demoshopping.ru/products/id/1",
+			"time": 47,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 403": true,
+				"Проверка сообщения об ошибке": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 403": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения об ошибке": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				47
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 403": true,
+					"Проверка сообщения об ошибке": true
+				}
+			]
+		},
+		{
+			"id": "8eca7fae-7727-40ee-aa22-1a1deacbac97",
+			"name": "Товар с таким ID не найден (код 404)",
+			"url": "https://qa.demoshopping.ru/products/id/7777",
+			"time": 44,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 404": true,
+				"Проверка сообщения об ошибке": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения об ошибке": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				44
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 404": true,
+					"Проверка сообщения об ошибке": true
+				}
+			]
+		},
+		{
+			"id": "1c0e4442-d351-4812-9ae3-bd49bddfe8cb",
+			"name": "Товар по категории продукта найден (код 200)",
+			"url": "https://qa.demoshopping.ru/products/FindByCategory?category=Phones",
+			"time": 76,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Проверка ключей и значений продукта": true,
+				"Проверка массива продуктов": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка ключей и значений продукта": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка массива продуктов": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				76
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Проверка ключей и значений продукта": true,
+					"Проверка массива продуктов": true
+				}
+			]
+		},
+		{
+			"id": "1566d8dd-e487-4834-8432-5f071bda1ca3",
+			"name": "Товары в данной категории не найдены (код 404)",
+			"url": "https://qa.demoshopping.ru/products/FindByCategory?category=true",
+			"time": 50,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 404": true,
+				"Проверка сообщения об ошибке": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения об ошибке": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				50
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 404": true,
+					"Проверка сообщения об ошибке": true
+				}
+			]
+		},
+		{
+			"id": "dbd2634b-ca5b-476d-a807-46355c56d39b",
+			"name": "Товары по производителю найдены (код 200)",
+			"url": "https://qa.demoshopping.ru/products/FindByManufacturer?manufacturer=Huawei",
+			"time": 49,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Проверка ключей и значений продукта": true,
+				"Проверка массива продуктов": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка ключей и значений продукта": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка массива продуктов": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				49
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Проверка ключей и значений продукта": true,
+					"Проверка массива продуктов": true
+				}
+			]
+		},
+		{
+			"id": "436eb16b-e0eb-42c6-8bb5-f87f0a24b677",
+			"name": "Товары данного производителя не найдены (код 404)",
+			"url": "https://qa.demoshopping.ru/products/FindByManufacturer?manufacturer=false",
+			"time": 49,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 404": true,
+				"Проверка сообщения об ошибке": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения об ошибке": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				49
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 404": true,
+					"Проверка сообщения об ошибке": true
+				}
+			]
+		},
+		{
+			"id": "1120818c-8527-4ecd-aa07-991d7f04a562",
+			"name": "Список продуктов с бесплатной доставкой найден (код 200)",
+			"url": "https://qa.demoshopping.ru/products/FindByShipping?freeShipping=true",
+			"time": 143,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 1500ms": true,
+				"Status code is 200": true,
+				"Проверка ключей и значений продукта": true,
+				"Проверка массива продуктов": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 1500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка ключей и значений продукта": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка массива продуктов": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				143
+			],
+			"allTests": [
+				{
+					"Response time is less than 1500ms": true,
+					"Status code is 200": true,
+					"Проверка ключей и значений продукта": true,
+					"Проверка массива продуктов": true
+				}
+			]
+		},
+		{
+			"id": "f9c94074-5964-45ef-8a91-9b0739f18e7a",
+			"name": "Отфильтрованный список продуктов (код 200)",
+			"url": "https://qa.demoshopping.ru/products/filter?category=Phones&manufacturer=Samsung&imageUrl=/images/phone.webp&freeShipping=0&minPrice=100&maxPrice=500",
+			"time": 51,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 1500ms": true,
+				"Status code is 200": true,
+				"Проверка ключей и значений продукта": true,
+				"Проверка массива продуктов": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 1500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка ключей и значений продукта": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка массива продуктов": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				51
+			],
+			"allTests": [
+				{
+					"Response time is less than 1500ms": true,
+					"Status code is 200": true,
+					"Проверка ключей и значений продукта": true,
+					"Проверка массива продуктов": true
+				}
+			]
+		},
+		{
+			"id": "5d54ca55-1761-4899-a832-774326694d1e",
+			"name": "Ошибка запроса при сортировке товара (код 404)",
+			"url": "https://qa.demoshopping.ru/products//filter?id={{productId}}",
+			"time": 39,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 404": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				39
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 404": true
+				}
+			]
+		},
+		{
+			"id": "0b57e0df-6603-439d-96c8-0b87d22194d4",
+			"name": "Продукт успешно добавлен (200)",
+			"url": "https://qa.demoshopping.ru/add-product",
+			"time": 76,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				76
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "5c6ec832-80dc-49a3-bb39-8d044cc1b9f4",
+			"name": "Товар успешно добавлен в корзину (200)",
+			"url": "https://qa.demoshopping.ru/cart",
+			"time": 76,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				76
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "a9734546-d1dc-4e89-8fce-83db2846180f",
+			"name": "Пользователь не авторизован, при попытке добавления товара (401)",
+			"url": "https://qa.demoshopping.ru/cart",
+			"time": 39,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 401": true,
+				"Проверка сообщения об ошибке": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения об ошибке": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				39
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 401": true,
+					"Проверка сообщения об ошибке": true
+				}
+			]
+		},
+		{
+			"id": "b047f74a-ade0-4004-9dc6-f0cc20548e18",
+			"name": "Неверный запрос при добавлении товара в корзину (400)",
+			"url": "https://qa.demoshopping.ru/cart",
+			"time": 45,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				45
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "f845e902-d84d-4761-8554-32ae1d4bb0d3",
+			"name": "Ошибка сервера при добавлении товара в корзину (500)",
+			"url": "https://qa.demoshopping.ru/cart",
+			"time": 65,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 500": true,
+				"Проверка сообщения об ошибке": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения об ошибке": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				65
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 500": true,
+					"Проверка сообщения об ошибке": true
+				}
+			]
+		},
+		{
+			"id": "01834411-c324-456d-8c42-cc10f6733546",
+			"name": "Содержимое корзины успешно получено (200)",
+			"url": "https://qa.demoshopping.ru/getCart",
+			"time": 47,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Проверка ключей и значений продукта": true,
+				"Проверка массива продуктов": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка ключей и значений продукта": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка массива продуктов": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				47
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Проверка ключей и значений продукта": true,
+					"Проверка массива продуктов": true
+				}
+			]
+		},
+		{
+			"id": "d8f958ed-a159-4fe5-9221-9823cc94afd0",
+			"name": "Пользователь не авторизован (401)",
+			"url": "https://qa.demoshopping.ru/getCart",
+			"time": 42,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 401": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				42
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 401": true
+				}
+			]
+		},
+		{
+			"id": "9d635bac-849d-45ad-88dd-91b8bbf2fa65",
+			"name": "Ошибка сервера, при получении товара корзины (500)",
+			"url": "https://qa.demoshopping.ru/getCart",
+			"time": 43,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 500": true,
+				"Проверка текста сообщения в JSON": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка текста сообщения в JSON": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				43
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 500": true,
+					"Проверка текста сообщения в JSON": true
+				}
+			]
+		},
+		{
+			"id": "46ade952-04af-4c20-bd5a-92525aa2d257",
+			"name": "Количество товара в корзине обновлено (200)",
+			"url": "https://qa.demoshopping.ru/cart/6320",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				106
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "5d7fbfca-0c25-45be-adb8-b6b0c5848c83",
+			"name": "Неверный запрос при обновлении товара в корзине (400)",
+			"url": "https://qa.demoshopping.ru/cart/6320",
+			"time": 39,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				39
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "b2925205-03d2-452f-bb8a-b49f81626278",
+			"name": "Пользователь не авторизован при обновлении товара в корзине (401)",
+			"url": "https://qa.demoshopping.ru/cart/6320",
+			"time": 47,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 401": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				47
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 401": true
+				}
+			]
+		},
+		{
+			"id": "0fab9ae9-19e7-4cfc-bab9-ad9753a7ca36",
+			"name": "Элемент корзины не найден (404)",
+			"url": "https://qa.demoshopping.ru/cart/566",
+			"time": 45,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 404": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				45
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 404": true
+				}
+			]
+		},
+		{
+			"id": "5ea1ac1b-ea9e-450e-aa82-580377e83106",
+			"name": "Ошибка сервера при обновлении товара корзины (500)",
+			"url": "https://qa.demoshopping.ru/cart/6320",
+			"time": 47,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 500": true,
+				"Проверка текста сообщения в JSON": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка текста сообщения в JSON": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				47
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 500": true,
+					"Проверка текста сообщения в JSON": true
+				}
+			]
+		},
+		{
+			"id": "8e0bae4c-36f9-48e3-ba02-2c8830f856bd",
+			"name": "Товар успешно удален из корзины (200)",
+			"url": "https://qa.demoshopping.ru/cart/6320",
+			"time": 97,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				97
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "20c6358c-f939-4cd6-8692-849a989da001",
+			"name": "Неверный запрос при удалении товара (400)",
+			"url": "https://qa.demoshopping.ru/cart/-",
+			"time": 48,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 400": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				48
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 400": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "99b7e6b2-89a4-493d-93f6-5620bcf5da76",
+			"name": "Пользователь не авторизован (401)",
+			"url": "https://qa.demoshopping.ru/cart/6320",
+			"time": 41,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 401": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				41
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 401": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "a749fe7d-afbd-4332-b60c-1dfb2a7f504e",
+			"name": "Товар во время удаления в корзине не найден (404)",
+			"url": "https://qa.demoshopping.ru/cart/566",
+			"time": 57,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 404": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				57
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 404": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "c3bdc601-b86b-4261-8e8d-0f9c78ce3c56",
+			"name": "Продукт успешно добавлен (200)",
+			"url": "https://qa.demoshopping.ru/add-product",
+			"time": 61,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				61
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "53266d55-783f-4fa9-b50a-1ed750468226",
+			"name": "Товар успешно добавлен в корзину (200)",
+			"url": "https://qa.demoshopping.ru/cart",
+			"time": 62,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				62
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "7a13006d-b1d8-4f98-ad17-0742926ee8e0",
+			"name": "Содержимое корзины успешно получено (200)",
+			"url": "https://qa.demoshopping.ru/getCart",
+			"time": 46,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Проверка ключей и значений продукта": true,
+				"Проверка массива продуктов": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка ключей и значений продукта": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка массива продуктов": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				46
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Проверка ключей и значений продукта": true,
+					"Проверка массива продуктов": true
+				}
+			]
+		},
+		{
+			"id": "9af3935e-3aef-487a-89b0-d4a0fc66c6b5",
+			"name": "Заказ успешно создан (201)",
+			"url": "https://qa.demoshopping.ru/orders",
+			"time": 113,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 201": true,
+				"Проверка текста сообщения в JSON": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка текста сообщения в JSON": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				113
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 201": true,
+					"Проверка текста сообщения в JSON": true
+				}
+			]
+		},
+		{
+			"id": "21302e4f-969e-4d0a-bfde-80ac8bafab9e",
+			"name": "Балансы успешно обновлены (200)",
+			"url": "https://qa.demoshopping.ru/updateBalances",
+			"time": 59,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				59
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "54b84aa8-9725-42d5-9534-275311a61f05",
+			"name": "Платеж успешно проведен и заказы оплачены (200)",
+			"url": "https://qa.demoshopping.ru/pay",
+			"time": 217,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				217
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "8148f7fb-071c-482e-9323-34a43ed47e2f",
+			"name": "Ошибка в данных карты или недостаточно средств / Данный тип карты или платежной системы не поддерживается (400)",
+			"url": "https://qa.demoshopping.ru/pay",
+			"time": 57,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 400": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				57
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 400": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "95bce51c-5836-44af-9a09-9e0dd5a882c7",
+			"name": "Пользователь не авторизован (401)",
+			"url": "https://qa.demoshopping.ru/pay",
+			"time": 68,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 401": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				68
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 401": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "87fbe295-f14b-40d0-9eff-a2405fa65874",
+			"name": "Балансы успешно обновлены (200)",
+			"url": "https://qa.demoshopping.ru/updateBalances",
+			"time": 58,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				58
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "1919bbf1-0e35-4643-ac51-f3c5fb3de229",
+			"name": "Продукт успешно добавлен (200)",
+			"url": "https://qa.demoshopping.ru/add-product",
+			"time": 63,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				63
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "dfae3fbd-4834-4787-aa5f-3a4ade495c78",
+			"name": "Товар успешно добавлен в корзину (200)",
+			"url": "https://qa.demoshopping.ru/cart",
+			"time": 63,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				63
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "23e2393d-5392-40af-8dc4-87b79f6bb7e2",
+			"name": "Содержимое корзины успешно получено (200)",
+			"url": "https://qa.demoshopping.ru/getCart",
+			"time": 48,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Проверка ключей и значений продукта": true,
+				"Проверка массива продуктов": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка ключей и значений продукта": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка массива продуктов": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				48
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Проверка ключей и значений продукта": true,
+					"Проверка массива продуктов": true
+				}
+			]
+		},
+		{
+			"id": "36df5cdf-00c2-4dc6-a2a8-ece02bb2ed99",
+			"name": "Заказ успешно создан (201)",
+			"url": "https://qa.demoshopping.ru/orders",
+			"time": 132,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 201": true,
+				"Проверка текста сообщения в JSON": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка текста сообщения в JSON": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				132
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 201": true,
+					"Проверка текста сообщения в JSON": true
+				}
+			]
+		},
+		{
+			"id": "c1ec6d17-548b-4d2b-99e7-6f91a63064f6",
+			"name": "Пользователь не авторизован при создании заказа (401)",
+			"url": "https://qa.demoshopping.ru/orders",
+			"time": 42,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 401": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				42
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 401": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "8107b742-bdef-401c-bf2c-cd7d2b38701e",
+			"name": "Ошибка сервера при создании заказа (500)",
+			"url": "https://qa.demoshopping.ru/orders",
+			"time": 40,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 500": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				40
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 500": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "571d25f4-c5b9-476b-8541-67bb6996cdf8",
+			"name": "Список заказов успешно получен (200)",
+			"url": "https://qa.demoshopping.ru/user-orders",
+			"time": 44,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				44
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "8d38e995-0431-4c56-9142-01c519faa246",
+			"name": "Пользователь не авторизован при получении списка заказов (401)",
+			"url": "https://qa.demoshopping.ru/user-orders",
+			"time": 48,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 401": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				48
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 401": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "f453e28d-2a90-401f-a964-b3367232b132",
+			"name": "Ошибка сервера при получении списка заказов (500)",
+			"url": "https://qa.demoshopping.ru/user-orders",
+			"time": 46,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 500": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				46
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 500": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "c85ee779-fd49-48bf-b099-63f178162d28",
+			"name": "Количество товара в заказе успешно обновлено (200)",
+			"url": "https://qa.demoshopping.ru/orders/1878/products/1001",
+			"time": 91,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				91
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "e26c448e-e9da-49a4-9c71-999297c59eae",
+			"name": "Неверный запрос при частичном обновлении товара в оплате (400)",
+			"url": "https://qa.demoshopping.ru/orders/1878/products/1001",
+			"time": 41,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 400": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 400": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				41
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 400": true
+				}
+			]
+		},
+		{
+			"id": "3b5f71b3-9a9e-4dfa-bed6-9b3a522557f7",
+			"name": "Пользователь не авторизован при частичном обновлении товара в оплате(401)",
+			"url": "https://qa.demoshopping.ru/orders/1878/products/1001",
+			"time": 36,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 401": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				36
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 401": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "e7c98d95-e196-489d-8fcb-72023c561df9",
+			"name": "Товар или заказ не найдены при частичном обновлении товара в оплате (404)",
+			"url": "https://qa.demoshopping.ru/orders/1/products/1001",
+			"time": 48,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 404": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				48
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 404": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "2d48cfb1-6526-4a68-aeca-a07ca8cba762",
+			"name": "Товар успешно удален из заказа (200)",
+			"url": "https://qa.demoshopping.ru/orders/1878/products/1001",
+			"time": 100,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Проверка сообщения": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Проверка сообщения": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				100
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Проверка сообщения": true
+				}
+			]
+		},
+		{
+			"id": "bb99fd1a-1a86-4add-87c9-ffc355d54d2a",
+			"name": "Товар или заказ не найдены при удалении товара из оплаты (404)",
+			"url": "https://qa.demoshopping.ru/orders/444/products/1001",
+			"time": 42,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Content-Type должен быть 'text/html'": true,
+				"Response time is less than 500ms": true,
+				"Status code is 404": true
+			},
+			"testPassFailCounts": {
+				"Content-Type должен быть 'text/html'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				42
+			],
+			"allTests": [
+				{
+					"Content-Type должен быть 'text/html'": true,
+					"Response time is less than 500ms": true,
+					"Status code is 404": true
+				}
+			]
+		},
+		{
+			"id": "743df199-9789-47ac-b5ee-2da4b2a7e6f6",
+			"name": "Общая сумма заказов успешно обновлена. Возвращает общую сумму заказов (200)",
+			"url": "https://qa.demoshopping.ru/update-orders-total",
+			"time": 47,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 200": true,
+				"Ключ 'message' должен присутствовать": true,
+				"message должно быть строкой": true,
+				"Значение ключа 'message' соответствует ожидаемому": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Ключ 'message' должен присутствовать": {
+					"pass": 1,
+					"fail": 0
+				},
+				"message должно быть строкой": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Значение ключа 'message' соответствует ожидаемому": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				47
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 200": true,
+					"Ключ 'message' должен присутствовать": true,
+					"message должно быть строкой": true,
+					"Значение ключа 'message' соответствует ожидаемому": true
+				}
+			]
+		},
+		{
+			"id": "d71e99c2-24f3-4e8b-b4ad-8a3e87310c37",
+			"name": "Пользователь не авторизован или токен недействителен(401)",
+			"url": "https://qa.demoshopping.ru/update-orders-total",
+			"time": 46,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 401": true,
+				"Ключ 'message' должен присутствовать": true,
+				"message должно быть строкой": true,
+				"Значение ключа 'message' соответствует ожидаемому": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Ключ 'message' должен присутствовать": {
+					"pass": 1,
+					"fail": 0
+				},
+				"message должно быть строкой": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Значение ключа 'message' соответствует ожидаемому": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				46
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 401": true,
+					"Ключ 'message' должен присутствовать": true,
+					"message должно быть строкой": true,
+					"Значение ключа 'message' соответствует ожидаемому": true
+				}
+			]
+		},
+		{
+			"id": "012daded-3e35-4c91-a3a0-c199d252aa7b",
+			"name": "Успешный запрос. Возвращает список оплаченных заказов (200)",
+			"url": "https://qa.demoshopping.ru/api/orders-history",
+			"time": 324,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				324
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "f68bfc13-b6ff-4c38-bf42-682590c49f4a",
+			"name": "Ошибка аутентификации. Токен не предоставлен (401)",
+			"url": "https://qa.demoshopping.ru/api/orders-history",
+			"time": 47,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 401": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				47
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 401": true
+				}
+			]
+		},
+		{
+			"id": "4bd8027f-0d24-4c06-947d-f1f59be2d961",
+			"name": "Внутренняя ошибка сервера. Не удалось получить данные об оплаченных заказах (500)",
+			"url": "https://qa.demoshopping.ru/api/orders-history",
+			"time": 48,
+			"responseCode": {
+				"code": 500,
+				"name": "Internal Server Error"
+			},
+			"tests": {
+				"Response time is less than 500ms": true,
+				"Status code is 500": true
+			},
+			"testPassFailCounts": {
+				"Response time is less than 500ms": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 500": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				48
+			],
+			"allTests": [
+				{
+					"Response time is less than 500ms": true,
+					"Status code is 500": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 5184,
+	"collection": {
+		"requests": [
+			{
+				"id": "138ce8fc-c245-4c91-88b0-a1e2c0356b15",
+				"method": "POST"
+			},
+			{
+				"id": "81c0cc06-4dd4-4a90-afc9-915880948074",
+				"method": "POST"
+			},
+			{
+				"id": "fe3818c5-de05-418e-9893-a7c72b995008",
+				"method": "POST"
+			},
+			{
+				"id": "2ee58b94-2429-4b87-9fdc-ec10578ce3be",
+				"method": "POST"
+			},
+			{
+				"id": "5ccba2e7-9f8e-4251-ab1a-2f5c80397966",
+				"method": "POST"
+			},
+			{
+				"id": "b2515d3f-27b8-4081-ab03-b9b10c9f6bfc",
+				"method": "POST"
+			},
+			{
+				"id": "f2e59c21-fd11-43db-a63a-4cadd8cbfd17",
+				"method": "GET"
+			},
+			{
+				"id": "bfa75e5e-20af-43e2-8123-7f2b6bca9811",
+				"method": "GET"
+			},
+			{
+				"id": "63b7b55a-a7b2-44fa-9537-487d513940a6",
+				"method": "DELETE"
+			},
+			{
+				"id": "9db03510-4cf3-4b95-996f-21293509c458",
+				"method": "DELETE"
+			},
+			{
+				"id": "fe06d0f3-50d5-4939-b266-1c81f9bb2db3",
+				"method": "GET"
+			},
+			{
+				"id": "6e10a002-3a61-4e8c-8a31-573a17e822d8",
+				"method": "POST"
+			},
+			{
+				"id": "ecade528-4a8b-45b5-9c13-e7d5ea5a9699",
+				"method": "POST"
+			},
+			{
+				"id": "137a7e2d-1eff-497f-891c-c8bb26d51a8e",
+				"method": "GET"
+			},
+			{
+				"id": "cc955292-c237-4a15-bb73-902d72719a4a",
+				"method": "GET"
+			},
+			{
+				"id": "0af2e823-d611-4997-a849-6c8381f8343e",
+				"method": "PATCH"
+			},
+			{
+				"id": "f6b06a60-a8de-4fbb-8b83-0f2349c83d0e",
+				"method": "PATCH"
+			},
+			{
+				"id": "331b1936-993d-43b7-aaa1-b4aa7fc612d3",
+				"method": "PATCH"
+			},
+			{
+				"id": "af365f10-96e9-4da6-ad37-2a2516607f10",
+				"method": "PUT"
+			},
+			{
+				"id": "e5d07eb4-4d0e-49b6-8c94-6467fff168cb",
+				"method": "PUT"
+			},
+			{
+				"id": "5061c03c-4272-4c2a-805f-07525c32d304",
+				"method": "PUT"
+			},
+			{
+				"id": "780cd1b9-5cff-40aa-857c-a7dea0572733",
+				"method": "DELETE"
+			},
+			{
+				"id": "404c9696-efe2-47d7-bb42-8c7de0f2ac00",
+				"method": "DELETE"
+			},
+			{
+				"id": "8eca7fae-7727-40ee-aa22-1a1deacbac97",
+				"method": "DELETE"
+			},
+			{
+				"id": "1c0e4442-d351-4812-9ae3-bd49bddfe8cb",
+				"method": "GET"
+			},
+			{
+				"id": "1566d8dd-e487-4834-8432-5f071bda1ca3",
+				"method": "GET"
+			},
+			{
+				"id": "dbd2634b-ca5b-476d-a807-46355c56d39b",
+				"method": "GET"
+			},
+			{
+				"id": "436eb16b-e0eb-42c6-8bb5-f87f0a24b677",
+				"method": "GET"
+			},
+			{
+				"id": "1120818c-8527-4ecd-aa07-991d7f04a562",
+				"method": "GET"
+			},
+			{
+				"id": "f9c94074-5964-45ef-8a91-9b0739f18e7a",
+				"method": "GET"
+			},
+			{
+				"id": "5d54ca55-1761-4899-a832-774326694d1e",
+				"method": "GET"
+			},
+			{
+				"id": "0b57e0df-6603-439d-96c8-0b87d22194d4",
+				"method": "POST"
+			},
+			{
+				"id": "5c6ec832-80dc-49a3-bb39-8d044cc1b9f4",
+				"method": "POST"
+			},
+			{
+				"id": "a9734546-d1dc-4e89-8fce-83db2846180f",
+				"method": "POST"
+			},
+			{
+				"id": "b047f74a-ade0-4004-9dc6-f0cc20548e18",
+				"method": "POST"
+			},
+			{
+				"id": "f845e902-d84d-4761-8554-32ae1d4bb0d3",
+				"method": "POST"
+			},
+			{
+				"id": "01834411-c324-456d-8c42-cc10f6733546",
+				"method": "GET"
+			},
+			{
+				"id": "d8f958ed-a159-4fe5-9221-9823cc94afd0",
+				"method": "GET"
+			},
+			{
+				"id": "9d635bac-849d-45ad-88dd-91b8bbf2fa65",
+				"method": "GET"
+			},
+			{
+				"id": "46ade952-04af-4c20-bd5a-92525aa2d257",
+				"method": "PATCH"
+			},
+			{
+				"id": "5d7fbfca-0c25-45be-adb8-b6b0c5848c83",
+				"method": "PATCH"
+			},
+			{
+				"id": "b2925205-03d2-452f-bb8a-b49f81626278",
+				"method": "PATCH"
+			},
+			{
+				"id": "0fab9ae9-19e7-4cfc-bab9-ad9753a7ca36",
+				"method": "PATCH"
+			},
+			{
+				"id": "5ea1ac1b-ea9e-450e-aa82-580377e83106",
+				"method": "PATCH"
+			},
+			{
+				"id": "8e0bae4c-36f9-48e3-ba02-2c8830f856bd",
+				"method": "DELETE"
+			},
+			{
+				"id": "20c6358c-f939-4cd6-8692-849a989da001",
+				"method": "DELETE"
+			},
+			{
+				"id": "99b7e6b2-89a4-493d-93f6-5620bcf5da76",
+				"method": "DELETE"
+			},
+			{
+				"id": "a749fe7d-afbd-4332-b60c-1dfb2a7f504e",
+				"method": "DELETE"
+			},
+			{
+				"id": "c3bdc601-b86b-4261-8e8d-0f9c78ce3c56",
+				"method": "POST"
+			},
+			{
+				"id": "53266d55-783f-4fa9-b50a-1ed750468226",
+				"method": "POST"
+			},
+			{
+				"id": "7a13006d-b1d8-4f98-ad17-0742926ee8e0",
+				"method": "GET"
+			},
+			{
+				"id": "9af3935e-3aef-487a-89b0-d4a0fc66c6b5",
+				"method": "POST"
+			},
+			{
+				"id": "21302e4f-969e-4d0a-bfde-80ac8bafab9e",
+				"method": "GET"
+			},
+			{
+				"id": "54b84aa8-9725-42d5-9534-275311a61f05",
+				"method": "POST"
+			},
+			{
+				"id": "8148f7fb-071c-482e-9323-34a43ed47e2f",
+				"method": "POST"
+			},
+			{
+				"id": "95bce51c-5836-44af-9a09-9e0dd5a882c7",
+				"method": "POST"
+			},
+			{
+				"id": "87fbe295-f14b-40d0-9eff-a2405fa65874",
+				"method": "GET"
+			},
+			{
+				"id": "1919bbf1-0e35-4643-ac51-f3c5fb3de229",
+				"method": "POST"
+			},
+			{
+				"id": "dfae3fbd-4834-4787-aa5f-3a4ade495c78",
+				"method": "POST"
+			},
+			{
+				"id": "23e2393d-5392-40af-8dc4-87b79f6bb7e2",
+				"method": "GET"
+			},
+			{
+				"id": "36df5cdf-00c2-4dc6-a2a8-ece02bb2ed99",
+				"method": "POST"
+			},
+			{
+				"id": "c1ec6d17-548b-4d2b-99e7-6f91a63064f6",
+				"method": "POST"
+			},
+			{
+				"id": "8107b742-bdef-401c-bf2c-cd7d2b38701e",
+				"method": "POST"
+			},
+			{
+				"id": "571d25f4-c5b9-476b-8541-67bb6996cdf8",
+				"method": "GET"
+			},
+			{
+				"id": "8d38e995-0431-4c56-9142-01c519faa246",
+				"method": "GET"
+			},
+			{
+				"id": "f453e28d-2a90-401f-a964-b3367232b132",
+				"method": "GET"
+			},
+			{
+				"id": "c85ee779-fd49-48bf-b099-63f178162d28",
+				"method": "PATCH"
+			},
+			{
+				"id": "e26c448e-e9da-49a4-9c71-999297c59eae",
+				"method": "PATCH"
+			},
+			{
+				"id": "3b5f71b3-9a9e-4dfa-bed6-9b3a522557f7",
+				"method": "PATCH"
+			},
+			{
+				"id": "e7c98d95-e196-489d-8fcb-72023c561df9",
+				"method": "PATCH"
+			},
+			{
+				"id": "2d48cfb1-6526-4a68-aeca-a07ca8cba762",
+				"method": "DELETE"
+			},
+			{
+				"id": "bb99fd1a-1a86-4add-87c9-ffc355d54d2a",
+				"method": "DELETE"
+			},
+			{
+				"id": "743df199-9789-47ac-b5ee-2da4b2a7e6f6",
+				"method": "POST"
+			},
+			{
+				"id": "d71e99c2-24f3-4e8b-b4ad-8a3e87310c37",
+				"method": "POST"
+			},
+			{
+				"id": "012daded-3e35-4c91-a3a0-c199d252aa7b",
+				"method": "GET"
+			},
+			{
+				"id": "f68bfc13-b6ff-4c38-bf42-682590c49f4a",
+				"method": "GET"
+			},
+			{
+				"id": "4bd8027f-0d24-4c06-947d-f1f59be2d961",
+				"method": "GET"
+			}
+		]
+	}
+}
