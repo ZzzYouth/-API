@@ -1,0 +1,5823 @@
+{
+	"info": {
+		"_postman_id": "ab4376d1-a9dc-4730-ab08-fab9e22faa3e",
+		"name": "DemoShopping",
+		"description": "API for online store\n\nContact Support:  \nName: Sergey Davis  \nEmail: [zzzyouthzzz@gmail.com](https://mailto:zzzyouthzzz@gmail.com)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38338491",
+		"_collection_link": "https://orange-comet-494386.postman.co/workspace/zzzDaviszzz~1a32d8f2-a80b-4795-87b8-29de848973d9/collection/38338491-ab4376d1-a9dc-4730-ab08-fab9e22faa3e?action=share&source=collection_link&creator=38338491"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Регистрация выполнена успешно (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем ответ в формате JSON\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"// Проверяем, что ключ \"message\" присутствует\r",
+									"pm.test(\"Ключ 'message' должен присутствовать\", function () {\r",
+									"    pm.expect(jsonData).to.have.property('message');\r",
+									"});\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 1500мс\r",
+									"pm.test(\"Response time is less than 1500мс500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+									"});\r",
+									"\r",
+									"// Проверяем, что значение ключа 'message' соответствует ожидаемому\r",
+									"pm.test(\"Значение ключа 'message' соответствует ожидаемому\", function () {\r",
+									"    pm.expect(jsonData.message).to.eql(\"Регистрация выполнена успешно\");\r",
+									"});\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"{{username}}\",\r\n  \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Пользователь успешно добавлен (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 1500мс\r",
+									"pm.test(\"Response time is less than 1500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Поиск ID с помощью регулярного выражения\r",
+									"var idMatch = responseText.match(/Пользователь успешно добавлен с ID: (\\d+)/);\r",
+									"\r",
+									"// Проверка, был ли найден ID\r",
+									"if (idMatch && idMatch[1]) {\r",
+									"    var ID = idMatch[1];\r",
+									"\r",
+									"    // Добавление ID в окружение\r",
+									"    pm.environment.set(\"ID_User\", ID);\r",
+									"    console.log(\"ID пользователя сохранен в окружении: \" + ID);\r",
+									"} else {\r",
+									"    console.log(\"ID пользователя не найден в ответе.\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"{{username2}}\",\r\n  \"password\": \"{{password2}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Вход выполнен успешно (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем ответ в формате JSON\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"// Проверяем, существует ли поле 'token'\r",
+									"if (jsonData.token) {\r",
+									"    // Сохраняем токен в переменную окружения с именем 'qa'\r",
+									"    pm.environment.set(\"token\", jsonData.token);\r",
+									"    console.log(\"Token saved to environment variable 'token'\");\r",
+									"} else {\r",
+									"    console.log(\"Token not found in the response\");\r",
+									"}\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 1500мс\r",
+									"pm.test(\"Response time is less than 1500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+									"});\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Проверяем, что ключ \"message\" присутствует\r",
+									"pm.test(\"Ключ 'message' должен присутствовать\", function () {\r",
+									"    pm.expect(jsonData).to.have.property('message');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// Проверяем, что значение \"message\" является строкой\r",
+									"pm.test(\"message должно быть строкой\", function () {\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"// Дополнительно: если нужно проверить значение ключа \"message\"\r",
+									"pm.test(\"Значение ключа 'message' соответствует ожидаемому\", function () {\r",
+									"    pm.expect(jsonData.message).to.eql(\"Вход выполнен успешно\");\r",
+									"});\r",
+									"\r",
+									"// Проверяем, что значение \"token\" является строкой\r",
+									"pm.test(\"token должно быть строкой\", function () {\r",
+									"    pm.expect(jsonData.token).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// Получаем ключ из окружения\r",
+									"var prevToken = pm.environment.get('prev_token');\r",
+									"\r",
+									"\r",
+									"// Проверяем, что ключ 'token' присутствует в ответе\r",
+									"pm.test(\"Ключ 'token' должен присутствовать\", function () {\r",
+									"    pm.expect(jsonData).to.have.property('token');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// Проверяем, что ключ 'token' в ответе отличается от старого значения\r",
+									"pm.test(\"Значение ключа 'token' должно измениться\", function () {\r",
+									"    pm.expect(jsonData.token).to.not.eql(prevToken);\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"{{username}}\",\r\n  \"password\": \"{{password}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Неверные данные пользователя (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 1500мс\r",
+									"pm.test(\"Response time is less than 1500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+									"});\r",
+									"\r",
+									"/// Проверяем получения ответа \"400\"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения об ошибке\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Неверные данные пользователя\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"\",\r\n  \"password\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Неверные данные пользователя или пользователь уже существует (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем ответ в формате JSON\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"// Проверяем, что ключ \"error\" присутствует\r",
+									"pm.test(\"Ключ 'error' должен присутствовать\", function () {\r",
+									"    pm.expect(jsonData).to.have.property('error');\r",
+									"});\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 1500мс\r",
+									"pm.test(\"Response time is less than 1500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+									"});\r",
+									"\r",
+									"// Проверяем, что значение ключа 'error' соответствует ожидаемому\r",
+									"pm.test(\"Значение ключа 'error' соответствует ожидаемому\", function () {\r",
+									"    pm.expect(jsonData.error).to.eql(\"Неверные данные пользователя\");\r",
+									"});\r",
+									"\r",
+									"/// Проверяем получения ответа \"400\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"Sergey_222\",\r\n  \"password\": \"Sergey_222\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Неверные данные пользователя (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 1500мс\r",
+									"pm.test(\"Response time is less than 1500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+									"});\r",
+									"\r",
+									"/// Проверяем получения ответа \"400\"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения об ошибке\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Неверные данные пользователя\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\": \"string\",\r\n  \"password\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Успешный запрос (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Статус код равен 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Ответ является валидным JSON\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Ответ содержит массив\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 1500мс\r",
+									"pm.test(\"Response time is less than 1500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Пользователь успешно удалён (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 1500мс\r",
+									"pm.test(\"Response time is less than 1500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"\r",
+									"\r",
+									"    "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/{{ID_User}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"{{ID_User}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Пользователь не найден (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 1500мс\r",
+									"pm.test(\"Response time is less than 1500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"404\"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения об ошибке\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Пользователь не найден\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/{{ID_User}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"{{ID_User}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Возвращает список всех продуктов (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей и значений продукта\", function () {\r",
+									"        pm.expect(product).to.have.property(\"product_id\");\r",
+									"        pm.expect(product).to.have.property(\"name\");\r",
+									"        pm.expect(product).to.have.property(\"description\");\r",
+									"        pm.expect(product).to.have.property(\"price\");\r",
+									"        pm.expect(product).to.have.property(\"category\");\r",
+									"        pm.expect(product).to.have.property(\"manufacturer\");\r",
+									"        pm.expect(product).to.have.property(\"imageUrl\");\r",
+									"        pm.expect(product).to.have.property(\"freeShipping\");\r",
+									"\r",
+									"        pm.expect(product.product_id).to.be.a('number');\r",
+									"        pm.expect(product.name).to.be.a('string');\r",
+									"        pm.expect(product.description).to.be.a('string');\r",
+									"        pm.expect(product.price).to.be.a('string');\r",
+									"        pm.expect(product.category).to.be.a('string');\r",
+									"        pm.expect(product.manufacturer).to.be.a('string');\r",
+									"        pm.expect(product.imageUrl).to.be.a('string');\r",
+									"        pm.expect(product.freeShipping).to.be.a('number');\r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"// Проверяем каждый объект в массиве\r",
+									"pm.test(\"Проверка массива продуктов\", function () {\r",
+									"    pm.expect(response).to.be.an('array');\r",
+									"    response.forEach(checkProduct);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Продукт успешно добавлен (200)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Генерация случайных данных для полей с помощью встроенных Postman функций\r",
+									"var randomNamePrefix = pm.variables.replaceIn(\"{{$randomNamePrefix}}\");\r",
+									"var randomWord = pm.variables.replaceIn(\"{{$randomWord}}\");\r",
+									"var randomPrice = Math.floor(Math.random() * 5000) + 100;  // Генерация случайной цены от 100 до 5000\r",
+									"var randomImageUrl = pm.variables.replaceIn(\"{{$randomImageUrl}}\") || \"http://example.com/default-image.jpg\";  // Случайный URL или значение по умолчанию\r",
+									"var randomBoolean = Math.random() < 0.5;  // Генерация случайного булевого значения\r",
+									"\r",
+									"// Жестко заданные значения\r",
+									"var category = \"Laptops\";\r",
+									"var manufacturer = \"Apple\";\r",
+									"\r",
+									"// Сохранение значений в окружение\r",
+									"pm.environment.set(\"name\", randomNamePrefix);\r",
+									"pm.environment.set(\"description\", randomWord);\r",
+									"pm.environment.set(\"price\", randomPrice);\r",
+									"pm.environment.set(\"category\", category);\r",
+									"pm.environment.set(\"manufacturer\", manufacturer);\r",
+									"pm.environment.set(\"imageUrl\", randomImageUrl);\r",
+									"pm.environment.set(\"freeShipping\", randomBoolean);\r",
+									"\r",
+									"// Лог для проверки сохраненных значений\r",
+									"console.log(\"Values saved to environment:\");\r",
+									"console.log({\r",
+									"  name: randomNamePrefix,\r",
+									"  description: randomWord,\r",
+									"  price: randomPrice,\r",
+									"  category: category,\r",
+									"  manufacturer: manufacturer,\r",
+									"  imageUrl: randomImageUrl,\r",
+									"  freeShipping: randomBoolean\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем текст ответа\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Используем регулярное выражение для поиска ID в тексте\r",
+									"var match = responseText.match(/ID:\\s*(\\d+)/);\r",
+									"\r",
+									"if (match) {\r",
+									"    // match[1] содержит ID\r",
+									"    var id = match[1];\r",
+									"    \r",
+									"    // Сохраняем ID в переменную окружения\r",
+									"    pm.environment.set(\"ID_Prod\", id);\r",
+									"\r",
+									"    \r",
+									"    \r",
+									"    console.log(\"ID сохранен в переменную окружения: \" + id);\r",
+									"} else {\r",
+									"    console.log(\"ID не найден в ответе\");\r",
+									"}\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"{{name}}\",\r\n  \"description\": \"{{description}}\",\r\n  \"price\": {{price}},\r\n  \"category\": \"{{category}}\",\r\n  \"manufacturer\": \"{{manufacturer}}\",\r\n  \"imageUrl\": \"{{imageUrl}}\",\r\n  \"freeShipping\": {{freeShipping}}\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/add-product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"add-product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ошибка в данных, при добавлении нового продукта (код 400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"400\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"\",\r\n  \"description\": \"This is an example product.\",\r\n  \"price\": 100,\r\n  \"category\": \"Electronics\",\r\n  \"manufacturer\": \"Example Manufacturer\",\r\n  \"imageUrl\": \"http://example.com/image.jpg\",\r\n  \"freeShipping\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/add-product?Content-Type=application/json",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"add-product"
+							],
+							"query": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товар успешно найден по ID (код 200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Проверка структуры JSON ответа\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    \r",
+									"    // Проверка полей \r",
+									"    pm.expect(jsonData).to.have.property(\"product_id\");\r",
+									"    pm.expect(jsonData).to.have.property(\"name\");\r",
+									"    pm.expect(jsonData).to.have.property(\"price\");\r",
+									"    pm.expect(jsonData).to.have.property(\"category\");\r",
+									"    pm.expect(jsonData).to.have.property(\"manufacturer\");\r",
+									"    pm.expect(jsonData).to.have.property(\"imageUrl\");\r",
+									"    pm.expect(jsonData).to.have.property(\"freeShipping\");\r",
+									"    \r",
+									"    \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/id/{{ID_Prod}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"id",
+								"{{ID_Prod}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товар с таким ID не найден (код 404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"404\"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения об ошибке\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Товар с таким ID не найден\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/id/1000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"id",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товар успешно обновлён частично (код 200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Товар частично обновлён\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Генерация случайных данных для полей с помощью встроенных Postman функций\r",
+									"var randomNamePrefix = pm.variables.replaceIn(\"{{$randomNamePrefix}}\");\r",
+									"var randomWord = pm.variables.replaceIn(\"{{$randomWord}}\");\r",
+									"var randomPrice = Math.floor(Math.random() * 5000) + 100;  // Генерация случайной цены от 100 до 5000\r",
+									"var randomImageUrl = pm.variables.replaceIn(\"{{$randomImageUrl}}\") || \"http://example.com/default-image.jpg\";  // Случайный URL или значение по умолчанию\r",
+									"var randomBoolean = Math.random() < 0.5;  // Генерация случайного булевого значения\r",
+									"\r",
+									"// Жестко заданные значения\r",
+									"var category = \"Laptops\";\r",
+									"var manufacturer = \"Apple\";\r",
+									"\r",
+									"// Сохранение значений в окружение\r",
+									"pm.environment.set(\"name\", randomNamePrefix);\r",
+									"pm.environment.set(\"description\", randomWord);\r",
+									"pm.environment.set(\"price\", randomPrice);\r",
+									"pm.environment.set(\"category\", category);\r",
+									"pm.environment.set(\"manufacturer\", manufacturer);\r",
+									"pm.environment.set(\"imageUrl\", randomImageUrl);\r",
+									"pm.environment.set(\"freeShipping\", randomBoolean);\r",
+									"\r",
+									"// Лог для проверки сохраненных значений\r",
+									"console.log(\"Values saved to environment:\");\r",
+									"console.log({\r",
+									"  name: randomNamePrefix,\r",
+									"  description: randomWord,\r",
+									"  price: randomPrice,\r",
+									"  category: category,\r",
+									"  manufacturer: manufacturer,\r",
+									"  imageUrl: randomImageUrl,\r",
+									"  freeShipping: randomBoolean\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"{{name}}\",\r\n  \"description\": \"{{description}}\",\r\n  \"price\": {{price}},\r\n  \"category\": \"{{category}}\",\r\n  \"manufacturer\": \"{{manufacturer}}\",\r\n  \"imageUrl\": \"{{imageUrl}}\",\r\n  \"freeShipping\": {{freeShipping}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/products/id/{{ID_Prod}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"id",
+								"{{ID_Prod}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ошибка частичного обновления товара (код 404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"/// Проверяем получения ответа \"404\"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения об ошибке\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Товар с таким ID не найден\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"самсунг\",\r\n  \"description\": \"0\",\r\n  \"price\": 1,\r\n  \"category\": \"2\",\r\n  \"manufacturer\": \"3\",\r\n  \"imageUrl\": \"4\",\r\n  \"freeShipping\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/products/id/1000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"id",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Неверные данные продукта, при частичном обновлении (код 400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"400\"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": 123,\r\n  \"description\": \"string\",\r\n  \"price\": 0,\r\n  \"category\": \"string\",\r\n  \"manufacturer\": \"string\",\r\n  \"imageUrl\": \"string\",\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/products/id/{{productId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"id",
+								"{{productId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Полное обновление товара по ID (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Товар обновлён\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"// Генерация случайных данных для полей с помощью встроенных Postman функций\r",
+									"var randomNamePrefix = pm.variables.replaceIn(\"{{$randomNamePrefix}}\");\r",
+									"var randomWord = pm.variables.replaceIn(\"{{$randomWord}}\");\r",
+									"var randomPrice = Math.floor(Math.random() * 5000) + 100;  // Генерация случайной цены от 100 до 5000\r",
+									"var randomImageUrl = pm.variables.replaceIn(\"{{$randomImageUrl}}\") || \"http://example.com/default-image.jpg\";  // Случайный URL или значение по умолчанию\r",
+									"var randomBoolean = Math.random() < 0.5;  // Генерация случайного булевого значения\r",
+									"\r",
+									"// Жестко заданные значения\r",
+									"var category = \"Laptops\";\r",
+									"var manufacturer = \"Apple\";\r",
+									"\r",
+									"// Сохранение значений в окружение\r",
+									"pm.environment.set(\"name\", randomNamePrefix);\r",
+									"pm.environment.set(\"description\", randomWord);\r",
+									"pm.environment.set(\"price\", randomPrice);\r",
+									"pm.environment.set(\"category\", category);\r",
+									"pm.environment.set(\"manufacturer\", manufacturer);\r",
+									"pm.environment.set(\"imageUrl\", randomImageUrl);\r",
+									"pm.environment.set(\"freeShipping\", randomBoolean);\r",
+									"\r",
+									"// Лог для проверки сохраненных значений\r",
+									"console.log(\"Values saved to environment:\");\r",
+									"console.log({\r",
+									"  name: randomNamePrefix,\r",
+									"  description: randomWord,\r",
+									"  price: randomPrice,\r",
+									"  category: category,\r",
+									"  manufacturer: manufacturer,\r",
+									"  imageUrl: randomImageUrl,\r",
+									"  freeShipping: randomBoolean\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"{{name}}\",\r\n  \"description\": \"{{description}}\",\r\n  \"price\": {{price}},\r\n  \"category\": \"{{category}}\",\r\n  \"manufacturer\": \"{{manufacturer}}\",\r\n  \"imageUrl\": \"{{imageUrl}}\",\r\n  \"freeShipping\": {{freeShipping}}\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/products/id/{{ID_Prod}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"id",
+								"{{ID_Prod}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Неверные данные продукта, при попытке обновления (код 400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"400\"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n  \"description\": \"что то рабочее\",\r\n  \"price\": 100,\r\n  \"category\": \"тапок\",\r\n  \"manufacturer\": \"новый\",\r\n  \"imageUrl\": \"нет\",\r\n  \"freeShipping\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/products/id/{{productId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"id",
+								"{{productId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товар с таким ID не найден, при попытке обновления (код 404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"404\"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения об ошибке\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Товар с таким ID не найден\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"сломанный самсунг\",\r\n  \"description\": \"что то рабочее\",\r\n  \"price\": 100,\r\n  \"category\": \"тапок\",\r\n  \"manufacturer\": \"новый\",\r\n  \"imageUrl\": \"нет\",\r\n  \"freeShipping\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/products/id/1000",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"id",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товар успешно удалён (код 200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Товар удалён\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/id/{{ID_Prod}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"id",
+								"{{ID_Prod}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление этого товара запрещено (код 403)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"403\"\r",
+									"pm.test(\"Status code is 403\", function () {\r",
+									"    pm.response.to.have.status(403);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения об ошибке\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Удаление этого товара запрещено\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/id/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"id",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товар с таким ID не найден (код 404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"404\"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Проверка сообщения об ошибке\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Товар с таким ID не найден\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/id/7777",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"id",
+								"7777"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Поиск удаленного ранее товара по ID (код 404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Проверка структуры JSON ответа\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    \r",
+									"    // Проверка полей \r",
+									"    pm.expect(jsonData).to.have.property(\"product_id\");\r",
+									"    pm.expect(jsonData).to.have.property(\"name\");\r",
+									"    pm.expect(jsonData).to.have.property(\"price\");\r",
+									"    pm.expect(jsonData).to.have.property(\"category\");\r",
+									"    pm.expect(jsonData).to.have.property(\"manufacturer\");\r",
+									"    pm.expect(jsonData).to.have.property(\"imageUrl\");\r",
+									"    pm.expect(jsonData).to.have.property(\"freeShipping\");\r",
+									"    \r",
+									"    \r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/id/{{ID_Prod}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"id",
+								"{{ID_Prod}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товар по категории продукта найден (код 200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей и значений продукта\", function () {\r",
+									"        pm.expect(product).to.have.property(\"product_id\");\r",
+									"        pm.expect(product).to.have.property(\"name\");\r",
+									"        pm.expect(product).to.have.property(\"description\");\r",
+									"        pm.expect(product).to.have.property(\"price\");\r",
+									"        pm.expect(product).to.have.property(\"category\");\r",
+									"        pm.expect(product).to.have.property(\"manufacturer\");\r",
+									"        pm.expect(product).to.have.property(\"imageUrl\");\r",
+									"        pm.expect(product).to.have.property(\"freeShipping\");\r",
+									"\r",
+									"        pm.expect(product.product_id).to.be.a('number');\r",
+									"        pm.expect(product.name).to.be.a('string');\r",
+									"        pm.expect(product.description).to.be.a('string');\r",
+									"        pm.expect(product.price).to.be.a('string');\r",
+									"        pm.expect(product.category).to.be.a('string');\r",
+									"        pm.expect(product.manufacturer).to.be.a('string');\r",
+									"        pm.expect(product.imageUrl).to.be.a('string');\r",
+									"        pm.expect(product.freeShipping).to.be.a('number');\r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"// Проверяем каждый объект в массиве\r",
+									"pm.test(\"Проверка массива продуктов\", function () {\r",
+									"    pm.expect(response).to.be.an('array');\r",
+									"    response.forEach(checkProduct);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/FindByCategory?category={{category}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"FindByCategory"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "{{category}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товары в данной категории не найдены (код 404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"404\"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения об ошибке\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Товары в данной категории не найдены\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/FindByCategory?category=true",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"FindByCategory"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товары по производителю найдены (код 200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей и значений продукта\", function () {\r",
+									"        pm.expect(product).to.have.property(\"product_id\");\r",
+									"        pm.expect(product).to.have.property(\"name\");\r",
+									"        pm.expect(product).to.have.property(\"description\");\r",
+									"        pm.expect(product).to.have.property(\"price\");\r",
+									"        pm.expect(product).to.have.property(\"category\");\r",
+									"        pm.expect(product).to.have.property(\"manufacturer\");\r",
+									"        pm.expect(product).to.have.property(\"imageUrl\");\r",
+									"        pm.expect(product).to.have.property(\"freeShipping\");\r",
+									"\r",
+									"        pm.expect(product.product_id).to.be.a('number');\r",
+									"        pm.expect(product.name).to.be.a('string');\r",
+									"        pm.expect(product.description).to.be.a('string');\r",
+									"        pm.expect(product.price).to.be.a('string');\r",
+									"        pm.expect(product.category).to.be.a('string');\r",
+									"        pm.expect(product.manufacturer).to.be.a('string');\r",
+									"        pm.expect(product.imageUrl).to.be.a('string');\r",
+									"        pm.expect(product.freeShipping).to.be.a('number');\r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"// Проверяем каждый объект в массиве\r",
+									"pm.test(\"Проверка массива продуктов\", function () {\r",
+									"    pm.expect(response).to.be.an('array');\r",
+									"    response.forEach(checkProduct);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/FindByManufacturer?manufacturer={{manufacturer}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"FindByManufacturer"
+							],
+							"query": [
+								{
+									"key": "manufacturer",
+									"value": "{{manufacturer}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товары данного производителя не найдены (код 404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"404\"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения об ошибке\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Товары данного производителя не найдены\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/FindByManufacturer?manufacturer=false",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"FindByManufacturer"
+							],
+							"query": [
+								{
+									"key": "manufacturer",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Список продуктов с бесплатной доставкой найден (код 200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 1500мс\r",
+									"pm.test(\"Response time is less than 1500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей и значений продукта\", function () {\r",
+									"        pm.expect(product).to.have.property(\"product_id\");\r",
+									"        pm.expect(product).to.have.property(\"name\");\r",
+									"        pm.expect(product).to.have.property(\"description\");\r",
+									"        pm.expect(product).to.have.property(\"price\");\r",
+									"        pm.expect(product).to.have.property(\"category\");\r",
+									"        pm.expect(product).to.have.property(\"manufacturer\");\r",
+									"        pm.expect(product).to.have.property(\"imageUrl\");\r",
+									"        pm.expect(product).to.have.property(\"freeShipping\");\r",
+									"\r",
+									"        pm.expect(product.product_id).to.be.a('number');\r",
+									"        pm.expect(product.name).to.be.a('string');\r",
+									"        pm.expect(product.description).to.be.a('string');\r",
+									"        pm.expect(product.price).to.be.a('string');\r",
+									"        pm.expect(product.category).to.be.a('string');\r",
+									"        pm.expect(product.manufacturer).to.be.a('string');\r",
+									"        pm.expect(product.imageUrl).to.be.a('string');\r",
+									"        pm.expect(product.freeShipping).to.be.a('number');\r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"// Проверяем каждый объект в массиве\r",
+									"pm.test(\"Проверка массива продуктов\", function () {\r",
+									"    pm.expect(response).to.be.an('array');\r",
+									"    response.forEach(checkProduct);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products/FindByShipping?freeShipping=true",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"FindByShipping"
+							],
+							"query": [
+								{
+									"key": "freeShipping",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Отфильтрованный список продуктов (код 200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 1500мс\r",
+									"pm.test(\"Response time is less than 1500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей и значений продукта\", function () {\r",
+									"        pm.expect(product).to.have.property(\"product_id\");\r",
+									"        pm.expect(product).to.have.property(\"name\");\r",
+									"        pm.expect(product).to.have.property(\"description\");\r",
+									"        pm.expect(product).to.have.property(\"price\");\r",
+									"        pm.expect(product).to.have.property(\"category\");\r",
+									"        pm.expect(product).to.have.property(\"manufacturer\");\r",
+									"        pm.expect(product).to.have.property(\"imageUrl\");\r",
+									"        pm.expect(product).to.have.property(\"freeShipping\");\r",
+									"\r",
+									"        pm.expect(product.product_id).to.be.a('number');\r",
+									"        pm.expect(product.name).to.be.a('string');\r",
+									"        pm.expect(product.description).to.be.a('string');\r",
+									"        pm.expect(product.price).to.be.a('string');\r",
+									"        pm.expect(product.category).to.be.a('string');\r",
+									"        pm.expect(product.manufacturer).to.be.a('string');\r",
+									"        pm.expect(product.imageUrl).to.be.a('string');\r",
+									"        pm.expect(product.freeShipping).to.be.a('number');\r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"// Проверяем каждый объект в массиве\r",
+									"pm.test(\"Проверка массива продуктов\", function () {\r",
+									"    pm.expect(response).to.be.an('array');\r",
+									"    response.forEach(checkProduct);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/products/filter?category=Phones&manufacturer=Samsung&imageUrl=/images/phone.webp&freeShipping=0&minPrice=100&maxPrice=500",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Samsung P30 19",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "Описание для Samsung P30 19",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "306.00",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "Phones"
+								},
+								{
+									"key": "manufacturer",
+									"value": "Samsung"
+								},
+								{
+									"key": "imageUrl",
+									"value": "/images/phone.webp"
+								},
+								{
+									"key": "freeShipping",
+									"value": "0"
+								},
+								{
+									"key": "product_id",
+									"value": "7",
+									"disabled": true
+								},
+								{
+									"key": "minPrice",
+									"value": "100"
+								},
+								{
+									"key": "maxPrice",
+									"value": "500"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ошибка запроса при сортировке товара (код 404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"404\"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/products//filter?id={{productId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"products",
+								"",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{productId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "Продукт успешно добавлен (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем текст ответа\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Используем регулярное выражение для поиска ID в тексте\r",
+									"var match = responseText.match(/ID:\\s*(\\d+)/);\r",
+									"\r",
+									"if (match) {\r",
+									"    // match[1] содержит ID\r",
+									"    var id = match[1];\r",
+									"    \r",
+									"    // Сохраняем ID в переменную окружения\r",
+									"    pm.environment.set(\"ID_Prod\", id);\r",
+									"    \r",
+									"    console.log(\"ID сохранен в переменную окружения: \" + id);\r",
+									"} else {\r",
+									"    console.log(\"ID не найден в ответе\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Тапок3000\",\r\n  \"description\": \"Best_of_the_Best.\",\r\n  \"price\": 100.00,\r\n  \"category\": \"Phones\",\r\n  \"manufacturer\": \"Zeon\",\r\n  \"imageUrl\": \"http://example.com/image.jpg\",\r\n  \"freeShipping\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/add-product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"add-product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товар успешно добавлен в корзину (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Поиск ID с помощью регулярного выражения\r",
+									"var idMatch = responseText.match(/Товар добавлен в корзину пользователя с ID: (\\d+)/);\r",
+									"\r",
+									"// Проверка, был ли найден ID\r",
+									"if (idMatch && idMatch[1]) {\r",
+									"    var ID = idMatch[1];\r",
+									"\r",
+									"    // Добавление ID в окружение\r",
+									"    pm.environment.set(\"ID_Card\", ID);\r",
+									"    console.log(\"ID товара пользователя сохранен в окружении: \" + ID);\r",
+									"} else {\r",
+									"    console.log(\"Товар добавлен в корзину пользователя с ID не найден в ответе.\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": {{ID_Prod}},\r\n  \"quantity\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cart",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Пользователь не авторизован, при попытке добавления товара (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"401\"\r",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения об ошибке\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Токен не предоставлен\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": 0,\r\n  \"quantity\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cart",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Неверный запрос при добавлении товара в корзину (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"400\"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": ,\r\n  \"quantity\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cart",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ошибка сервера при добавлении товара в корзину (500)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"500\"\r",
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения об ошибке\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Ошибка сервера при добавлении товара в корзину\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": 0,\r\n  \"quantity\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cart",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Содержимое корзины успешно получено (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей и значений продукта\", function () {\r",
+									"        pm.expect(product).to.have.property(\"cart_item_id\");\r",
+									"        pm.expect(product).to.have.property(\"quantity\");\r",
+									"        pm.expect(product).to.have.property(\"product_id\");\r",
+									"        pm.expect(product).to.have.property(\"name\");\r",
+									"        pm.expect(product).to.have.property(\"price\");\r",
+									"        pm.expect(product).to.have.property(\"imageUrl\");\r",
+									"        \r",
+									"        pm.expect(product.cart_item_id).to.be.a('number');\r",
+									"        pm.expect(product.quantity).to.be.a('number');\r",
+									"        pm.expect(product.quantity).to.be.a('number');\r",
+									"        pm.expect(product.name).to.be.a('string');\r",
+									"        pm.expect(product.price).to.be.a('string');\r",
+									"        pm.expect(product.imageUrl).to.be.a('string');\r",
+									"       \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"// Проверяем каждый объект в массиве\r",
+									"pm.test(\"Проверка массива продуктов\", function () {\r",
+									"    pm.expect(response).to.be.an('array');\r",
+									"    response.forEach(checkProduct);\r",
+									"});\r",
+									"\r",
+									"// Получаем JSON-ответ\r",
+									"var responseJson = pm.response.json();\r",
+									"\r",
+									"// Проверяем, что ответ содержит массив и что он не пуст\r",
+									"if (Array.isArray(responseJson) && responseJson.length > 0) {\r",
+									"    // Извлекаем первый элемент массива\r",
+									"    var firstItem = responseJson[0];\r",
+									"\r",
+									"    // Проверяем, что элемент имеет ключ 'cart_item_id'\r",
+									"    if (firstItem.cart_item_id !== undefined) {\r",
+									"        // Сохраняем значение 'cart_item_id' в окружение\r",
+									"        pm.environment.set(\"cart_item_id\", firstItem.cart_item_id);\r",
+									"        console.log(\"cart_item_id сохранен в окружение: \" + firstItem.cart_item_id);\r",
+									"    } else {\r",
+									"        console.log(\"Ключ 'cart_item_id' не найден в ответе.\");\r",
+									"    }\r",
+									"} else {\r",
+									"    console.log(\"Ответ не является массивом или он пуст.\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/getCart",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"getCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Пользователь не авторизован (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей\", function () {\r",
+									"        pm.expect(product).to.have.property(\"message\");\r",
+									"            });\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/getCart",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"getCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ошибка сервера, при получении товара корзины (500)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей\", function () {\r",
+									"        pm.expect(product).to.have.property(\"message\");\r",
+									"            });\r",
+									"}\r",
+									"\r",
+									"// Получаем JSON-ответ\r",
+									"let responseJson = pm.response.json();\r",
+									"\r",
+									"// Ожидаемое сообщение\r",
+									"let expectedMessage = \"Ошибка сервера при получении содержимого корзины\";\r",
+									"\r",
+									"// Проверяем, что поле \"message\" соответствует ожидаемому значению\r",
+									"pm.test(\"Проверка текста сообщения в JSON\", function () {\r",
+									"    pm.expect(responseJson.message).to.eql(expectedMessage);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/getCart",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"getCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Количество товара в корзине обновлено (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей\", function () {\r",
+									"        pm.expect(product).to.have.property(\"message\");\r",
+									"            });\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"quantity\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cart/{{cart_item_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart",
+								"{{cart_item_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Неверный запрос при обновлении товара в корзине (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"400\"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"quantity\": \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cart/{{cart_item_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart",
+								"{{cart_item_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Пользователь не авторизован при обновлении товара в корзине (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей\", function () {\r",
+									"        pm.expect(product).to.have.property(\"message\");\r",
+									"            });\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"quantity\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cart/{{cart_item_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart",
+								"{{cart_item_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Элемент корзины не найден (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"404\"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"quantity\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cart/566",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart",
+								"566"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ошибка сервера при обновлении товара корзины (500)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей\", function () {\r",
+									"        pm.expect(product).to.have.property(\"message\");\r",
+									"            });\r",
+									"}\r",
+									"\r",
+									"// Получаем JSON-ответ\r",
+									"let responseJson = pm.response.json();\r",
+									"\r",
+									"// Ожидаемое сообщение\r",
+									"let expectedMessage = \"Ошибка сервера при обновлении количества товара в корзине\";\r",
+									"\r",
+									"// Проверяем, что поле \"message\" соответствует ожидаемому значению\r",
+									"pm.test(\"Проверка текста сообщения в JSON\", function () {\r",
+									"    pm.expect(responseJson.message).to.eql(expectedMessage);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"quantity\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cart/{{cart_item_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart",
+								"{{cart_item_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товар успешно удален из корзины (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/cart/{{cart_item_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart",
+								"{{cart_item_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Неверный запрос при удалении товара (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"400\"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Неверный формат ID товара в корзине\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/cart/-",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart",
+								"-"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Пользователь не авторизован (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"401\"\r",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Токен не предоставлен\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/cart/{{cart_item_id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart",
+								"{{cart_item_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товар во время удаления в корзине не найден (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"404\"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Товар не найден в корзине или у пользователя нет прав на его удаление\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/cart/566",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart",
+								"566"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение содержимого корзины после удаления товара из корзины (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей и значений продукта\", function () {\r",
+									"        pm.expect(product).to.have.property(\"cart_item_id\");\r",
+									"        pm.expect(product).to.have.property(\"quantity\");\r",
+									"        pm.expect(product).to.have.property(\"product_id\");\r",
+									"        pm.expect(product).to.have.property(\"name\");\r",
+									"        pm.expect(product).to.have.property(\"price\");\r",
+									"        pm.expect(product).to.have.property(\"imageUrl\");\r",
+									"        \r",
+									"        pm.expect(product.cart_item_id).to.be.a('number');\r",
+									"        pm.expect(product.quantity).to.be.a('number');\r",
+									"        pm.expect(product.quantity).to.be.a('number');\r",
+									"        pm.expect(product.name).to.be.a('string');\r",
+									"        pm.expect(product.price).to.be.a('string');\r",
+									"        pm.expect(product.imageUrl).to.be.a('string');\r",
+									"       \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"// Проверяем каждый объект в массиве\r",
+									"pm.test(\"Проверка массива продуктов\", function () {\r",
+									"    pm.expect(response).to.be.an('array');\r",
+									"    response.forEach(checkProduct);\r",
+									"});\r",
+									"\r",
+									"// Получаем JSON-ответ\r",
+									"var responseJson = pm.response.json();\r",
+									"\r",
+									"// Проверяем, что ответ содержит массив и что он не пуст\r",
+									"if (Array.isArray(responseJson) && responseJson.length > 0) {\r",
+									"    // Извлекаем первый элемент массива\r",
+									"    var firstItem = responseJson[0];\r",
+									"\r",
+									"    // Проверяем, что элемент имеет ключ 'cart_item_id'\r",
+									"    if (firstItem.cart_item_id !== undefined) {\r",
+									"        // Сохраняем значение 'cart_item_id' в окружение\r",
+									"        pm.environment.set(\"cart_item_id\", firstItem.cart_item_id);\r",
+									"        console.log(\"cart_item_id сохранен в окружение: \" + firstItem.cart_item_id);\r",
+									"    } else {\r",
+									"        console.log(\"Ключ 'cart_item_id' не найден в ответе.\");\r",
+									"    }\r",
+									"} else {\r",
+									"    console.log(\"Ответ не является массивом или он пуст.\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/getCart",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"getCart"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "Продукт успешно добавлен (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем текст ответа\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Используем регулярное выражение для поиска ID в тексте\r",
+									"var match = responseText.match(/ID:\\s*(\\d+)/);\r",
+									"\r",
+									"if (match) {\r",
+									"    // match[1] содержит ID\r",
+									"    var id = match[1];\r",
+									"    \r",
+									"    // Сохраняем ID в переменную окружения\r",
+									"    pm.environment.set(\"ID_Prod\", id);\r",
+									"    \r",
+									"    console.log(\"ID сохранен в переменную окружения: \" + id);\r",
+									"} else {\r",
+									"    console.log(\"ID не найден в ответе\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Тапок3000\",\r\n  \"description\": \"Best_of_the_Best.\",\r\n  \"price\": 100.00,\r\n  \"category\": \"Phones\",\r\n  \"manufacturer\": \"Zeon\",\r\n  \"imageUrl\": \"http://example.com/image.jpg\",\r\n  \"freeShipping\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/add-product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"add-product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товар успешно добавлен в корзину (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Поиск ID с помощью регулярного выражения\r",
+									"var idMatch = responseText.match(/Товар добавлен в корзину пользователя с ID: (\\d+)/);\r",
+									"\r",
+									"// Проверка, был ли найден ID\r",
+									"if (idMatch && idMatch[1]) {\r",
+									"    var ID = idMatch[1];\r",
+									"\r",
+									"    // Добавление ID в окружение\r",
+									"    pm.environment.set(\"ID_Card\", ID);\r",
+									"    console.log(\"ID товара пользователя сохранен в окружении: \" + ID);\r",
+									"} else {\r",
+									"    console.log(\"Товар добавлен в корзину пользователя с ID не найден в ответе.\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": {{ID_Prod}},\r\n  \"quantity\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cart",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Содержимое корзины успешно получено (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей и значений продукта\", function () {\r",
+									"        pm.expect(product).to.have.property(\"cart_item_id\");\r",
+									"        pm.expect(product).to.have.property(\"quantity\");\r",
+									"        pm.expect(product).to.have.property(\"product_id\");\r",
+									"        pm.expect(product).to.have.property(\"name\");\r",
+									"        pm.expect(product).to.have.property(\"price\");\r",
+									"        pm.expect(product).to.have.property(\"imageUrl\");\r",
+									"        \r",
+									"        pm.expect(product.cart_item_id).to.be.a('number');\r",
+									"        pm.expect(product.quantity).to.be.a('number');\r",
+									"        pm.expect(product.quantity).to.be.a('number');\r",
+									"        pm.expect(product.name).to.be.a('string');\r",
+									"        pm.expect(product.price).to.be.a('string');\r",
+									"        pm.expect(product.imageUrl).to.be.a('string');\r",
+									"       \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"// Проверяем каждый объект в массиве\r",
+									"pm.test(\"Проверка массива продуктов\", function () {\r",
+									"    pm.expect(response).to.be.an('array');\r",
+									"    response.forEach(checkProduct);\r",
+									"});\r",
+									"\r",
+									"// Получаем JSON-ответ\r",
+									"var responseJson = pm.response.json();\r",
+									"\r",
+									"// Проверяем, что ответ содержит массив и что он не пуст\r",
+									"if (Array.isArray(responseJson) && responseJson.length > 0) {\r",
+									"    // Извлекаем первый элемент массива\r",
+									"    var firstItem = responseJson[0];\r",
+									"\r",
+									"    // Проверяем, что элемент имеет ключ 'cart_item_id'\r",
+									"    if (firstItem.cart_item_id !== undefined) {\r",
+									"        // Сохраняем значение 'cart_item_id' в окружение\r",
+									"        pm.environment.set(\"cart_item_id\", firstItem.cart_item_id);\r",
+									"        console.log(\"cart_item_id сохранен в окружение: \" + firstItem.cart_item_id);\r",
+									"    } else {\r",
+									"        console.log(\"Ключ 'cart_item_id' не найден в ответе.\");\r",
+									"    }\r",
+									"} else {\r",
+									"    console.log(\"Ответ не является массивом или он пуст.\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/getCart",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"getCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Заказ успешно создан (201)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей\", function () {\r",
+									"        pm.expect(product).to.have.property(\"message\");\r",
+									"            });\r",
+									"}\r",
+									"\r",
+									"// Получаем JSON-ответ\r",
+									"let responseJson = pm.response.json();\r",
+									"\r",
+									"// Ожидаемое сообщение\r",
+									"let expectedMessage = \"Заказ успешно создан\";\r",
+									"\r",
+									"// Проверяем, что поле \"message\" соответствует ожидаемому значению\r",
+									"pm.test(\"Проверка текста сообщения в JSON\", function () {\r",
+									"    pm.expect(responseJson.message).to.eql(expectedMessage);\r",
+									"});\r",
+									"\r",
+									"// Получаем JSON-ответ\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"// Проверяем, что ключ orderId существует в ответе\r",
+									"if (jsonData.orderId) {\r",
+									"    // Сохраняем значение orderId в переменную окружения\r",
+									"    pm.environment.set(\"orderId\", jsonData.orderId);\r",
+									"    console.log(\"orderId сохранен в окружение: \" + jsonData.orderId);\r",
+									"} else {\r",
+									"    console.log(\"orderId не найден в ответе.\");\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Балансы успешно обновлены (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Балансы успешно обновлены\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/updateBalances",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"updateBalances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Платеж успешно проведен и заказы оплачены (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Платеж успешно проведен, заказы оплачены и даты обновлены.\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"card_type\": \"VISA\",\r\n  \"card_code\": \"8820354696467284\",\r\n  \"expiry_month\": 12,\r\n  \"expiry_year\": 26,\r\n  \"cvv\": \"123\",\r\n  \"email\": \"user@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/pay",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"pay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ошибка в данных карты или недостаточно средств / Данный тип карты или платежной системы не поддерживается (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"400\"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Данные карты неверны.\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjA2LCJpYXQiOjE3MjY0MDMyNTIsImV4cCI6MTczNTA0MzI1Mn0.nb-jdhZcN4RpTRtMJADvafx7HvG28DG1LKozx3RASrc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"card_type\": \"VISA\",\r\n  \"card_code\": \"88203546964672845\",\r\n  \"expiry_month\": \t12,\r\n  \"expiry_year\": 26,\r\n  \"cvv\": \"123\",\r\n  \"email\": \"user@example.com\",\r\n  \"email_paypal\": \"user@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/pay",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"pay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Пользователь не авторизован (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"401\"\r",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Требуется авторизация\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"card_type\": \"VISA\",\r\n  \"card_code\": \"8820354696467284\",\r\n  \"expiry_month\": \t12,\r\n  \"expiry_year\": 26,\r\n  \"cvv\": \"123\",\r\n  \"email\": \"user@example.com\",\r\n  \"email_paypal\": \"user@example.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/pay",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"pay"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Балансы успешно обновлены (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Балансы успешно обновлены\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/updateBalances",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"updateBalances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Продукт успешно добавлен (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем текст ответа\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Используем регулярное выражение для поиска ID в тексте\r",
+									"var match = responseText.match(/ID:\\s*(\\d+)/);\r",
+									"\r",
+									"if (match) {\r",
+									"    // match[1] содержит ID\r",
+									"    var id = match[1];\r",
+									"    \r",
+									"    // Сохраняем ID в переменную окружения\r",
+									"    pm.environment.set(\"ID_Prod\", id);\r",
+									"    \r",
+									"    console.log(\"ID сохранен в переменную окружения: \" + id);\r",
+									"} else {\r",
+									"    console.log(\"ID не найден в ответе\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Тапок3000\",\r\n  \"description\": \"Best_of_the_Best.\",\r\n  \"price\": 100.00,\r\n  \"category\": \"Phones\",\r\n  \"manufacturer\": \"Zeon\",\r\n  \"imageUrl\": \"http://example.com/image.jpg\",\r\n  \"freeShipping\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/add-product",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"add-product"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товар успешно добавлен в корзину (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"// Поиск ID с помощью регулярного выражения\r",
+									"var idMatch = responseText.match(/Товар добавлен в корзину пользователя с ID: (\\d+)/);\r",
+									"\r",
+									"// Проверка, был ли найден ID\r",
+									"if (idMatch && idMatch[1]) {\r",
+									"    var ID = idMatch[1];\r",
+									"\r",
+									"    // Добавление ID в окружение\r",
+									"    pm.environment.set(\"ID_Card\", ID);\r",
+									"    console.log(\"ID товара пользователя сохранен в окружении: \" + ID);\r",
+									"} else {\r",
+									"    console.log(\"Товар добавлен в корзину пользователя с ID не найден в ответе.\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": {{ID_Prod}},\r\n  \"quantity\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/cart",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Содержимое корзины успешно получено (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей и значений продукта\", function () {\r",
+									"        pm.expect(product).to.have.property(\"cart_item_id\");\r",
+									"        pm.expect(product).to.have.property(\"quantity\");\r",
+									"        pm.expect(product).to.have.property(\"product_id\");\r",
+									"        pm.expect(product).to.have.property(\"name\");\r",
+									"        pm.expect(product).to.have.property(\"price\");\r",
+									"        pm.expect(product).to.have.property(\"imageUrl\");\r",
+									"        \r",
+									"        pm.expect(product.cart_item_id).to.be.a('number');\r",
+									"        pm.expect(product.quantity).to.be.a('number');\r",
+									"        pm.expect(product.quantity).to.be.a('number');\r",
+									"        pm.expect(product.name).to.be.a('string');\r",
+									"        pm.expect(product.price).to.be.a('string');\r",
+									"        pm.expect(product.imageUrl).to.be.a('string');\r",
+									"       \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"// Проверяем каждый объект в массиве\r",
+									"pm.test(\"Проверка массива продуктов\", function () {\r",
+									"    pm.expect(response).to.be.an('array');\r",
+									"    response.forEach(checkProduct);\r",
+									"});\r",
+									"\r",
+									"// Получаем JSON-ответ\r",
+									"var responseJson = pm.response.json();\r",
+									"\r",
+									"// Проверяем, что ответ содержит массив и что он не пуст\r",
+									"if (Array.isArray(responseJson) && responseJson.length > 0) {\r",
+									"    // Извлекаем первый элемент массива\r",
+									"    var firstItem = responseJson[0];\r",
+									"\r",
+									"    // Проверяем, что элемент имеет ключ 'cart_item_id'\r",
+									"    if (firstItem.cart_item_id !== undefined) {\r",
+									"        // Сохраняем значение 'cart_item_id' в окружение\r",
+									"        pm.environment.set(\"cart_item_id\", firstItem.cart_item_id);\r",
+									"        console.log(\"cart_item_id сохранен в окружение: \" + firstItem.cart_item_id);\r",
+									"    } else {\r",
+									"        console.log(\"Ключ 'cart_item_id' не найден в ответе.\");\r",
+									"    }\r",
+									"} else {\r",
+									"    console.log(\"Ответ не является массивом или он пуст.\");\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/getCart",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"getCart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Заказ успешно создан (201)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей\", function () {\r",
+									"        pm.expect(product).to.have.property(\"message\");\r",
+									"            });\r",
+									"}\r",
+									"\r",
+									"// Получаем JSON-ответ\r",
+									"let responseJson = pm.response.json();\r",
+									"\r",
+									"// Ожидаемое сообщение\r",
+									"let expectedMessage = \"Заказ успешно создан\";\r",
+									"\r",
+									"// Проверяем, что поле \"message\" соответствует ожидаемому значению\r",
+									"pm.test(\"Проверка текста сообщения в JSON\", function () {\r",
+									"    pm.expect(responseJson.message).to.eql(expectedMessage);\r",
+									"});\r",
+									"\r",
+									"// Получаем JSON-ответ\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"// Проверяем, что ключ orderId существует в ответе\r",
+									"if (jsonData.orderId) {\r",
+									"    // Сохраняем значение orderId в переменную окружения\r",
+									"    pm.environment.set(\"orderId\", jsonData.orderId);\r",
+									"    console.log(\"orderId сохранен в окружение: \" + jsonData.orderId);\r",
+									"} else {\r",
+									"    console.log(\"orderId не найден в ответе.\");\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Пользователь не авторизован при создании заказа (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"401\"\r",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Токен не предоставлен\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ошибка сервера при создании заказа (500)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"500\"\r",
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Ошибка сервера при создании заказа.\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}9",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Список заказов успешно получен (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей и значений продукта\", function () {\r",
+									"        pm.expect(product).to.have.property(\"order_id\");\r",
+									" \r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user-orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Пользователь не авторизован при получении списка заказов (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"401\"\r",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Токен не предоставлен\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user-orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ошибка сервера при получении списка заказов (500)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"500\"\r",
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Ошибка сервера при получении заказов.\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}7",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user-orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user-orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Количество товара в заказе успешно обновлено (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Количество товара обновлено в заказе\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"quantity\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/orders/{{orderId}}/products/{{ID_Prod}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}",
+								"products",
+								"{{ID_Prod}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Неверный запрос при частичном обновлении товара в оплате (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"400\"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"quantity\": \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/orders/{{orderId}}/products/{{ID_Prod}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}",
+								"products",
+								"{{ID_Prod}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Пользователь не авторизован при частичном обновлении товара в оплате(401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"401\"\r",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Токен не предоставлен.\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"quantity\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/orders/{{orderId}}/products/{{ID_Prod}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}",
+								"products",
+								"{{ID_Prod}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товар или заказ не найдены при частичном обновлении товара в оплате (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"/// Проверяем получения ответа \"404\"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Заказ не найден или у вас нет к нему доступа.\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"quantity\": 0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/orders/1/products/{{ID_Prod}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders",
+								"1",
+								"products",
+								"{{ID_Prod}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товар успешно удален из заказа (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получение ответа в виде строки\r",
+									"var responseText = pm.response.text();\r",
+									"\r",
+									"pm.test(\"Проверка сообщения\", function () {\r",
+									"    // Получаем тело ответа как строку\r",
+									"    var responseBody = pm.response.text();\r",
+									"    \r",
+									"    // Определяем ожидаемую фразу\r",
+									"    var expectedMessage = \"Продукт успешно возвращен в корзину и удален из заказа.\";\r",
+									"    \r",
+									"    // Проверяем, содержит ли тело ответа ожидаемую фразу\r",
+									"    pm.expect(responseBody).to.include(expectedMessage);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/orders/{{orderId}}/products/{{ID_Prod}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}",
+								"products",
+								"{{ID_Prod}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Товар или заказ не найдены при удалении товара из оплаты (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем заголовки ответа\r",
+									"var contentType = pm.response.headers.get('Content-Type');\r",
+									"\r",
+									"// Проверяем, что Content-Type равен 'text/html'\r",
+									"pm.test(\"Content-Type должен быть 'text/html'\", function () {\r",
+									"    pm.expect(contentType).to.include('text/html');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"/// Проверяем получения ответа \"404\"\r",
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/orders/444/products/{{ID_Prod}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"orders",
+								"444",
+								"products",
+								"{{ID_Prod}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Общая сумма заказов успешно обновлена. Возвращает общую сумму заказов (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем ответ в формате JSON\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"/// Проверяем получения ответа \"200\"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Проверяем, что ключ \"message\" присутствует\r",
+									"pm.test(\"Ключ 'message' должен присутствовать\", function () {\r",
+									"    pm.expect(jsonData).to.have.property('message');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// Проверяем, что значение \"message\" является строкой\r",
+									"pm.test(\"message должно быть строкой\", function () {\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"// Дополнительно: если нужно проверить значение ключа \"message\"\r",
+									"pm.test(\"Значение ключа 'message' соответствует ожидаемому\", function () {\r",
+									"    pm.expect(jsonData.message).to.eql(\"Общая сумма заказов обновлена\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/update-orders-total",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"update-orders-total"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Пользователь не авторизован или токен недействителен(401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Получаем ответ в формате JSON\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"\r",
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"/// Проверяем получения ответа \"401\"\r",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"// Проверяем, что ключ \"message\" присутствует\r",
+									"pm.test(\"Ключ 'message' должен присутствовать\", function () {\r",
+									"    pm.expect(jsonData).to.have.property('message');\r",
+									"});\r",
+									"\r",
+									"\r",
+									"// Проверяем, что значение \"message\" является строкой\r",
+									"pm.test(\"message должно быть строкой\", function () {\r",
+									"    pm.expect(jsonData.message).to.be.a('string');\r",
+									"});\r",
+									"\r",
+									"// Дополнительно: если нужно проверить значение ключа \"message\"\r",
+									"pm.test(\"Значение ключа 'message' соответствует ожидаемому\", function () {\r",
+									"    pm.expect(jsonData.message).to.eql(\"Токен не предоставлен\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/update-orders-total",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"update-orders-total"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Успешный запрос. Возвращает список оплаченных заказов (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"  "
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/orders-history",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders-history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ошибка аутентификации. Токен не предоставлен (401)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей\", function () {\r",
+									"        pm.expect(product).to.have.property(\"message\");\r",
+									"            });\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/orders-history",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders-history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Внутренняя ошибка сервера. Не удалось получить данные об оплаченных заказах (500)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"/// Получение ответа должно быть не больше 500мс\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"\r",
+									"// Получаем ответ в формате JSON\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Функция для проверки наличия ключей и значений в объекте\r",
+									"function checkProduct(product) {\r",
+									"    pm.test(\"Проверка ключей\", function () {\r",
+									"        pm.expect(product).to.have.property(\"message\");\r",
+									"            });\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/orders-history",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"orders-history"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
